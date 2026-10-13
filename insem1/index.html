@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Session Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>🔐 Secure Login System</h1>
+        <p class="subtitle">Login, Logout & User Management</p>
+
+        <!-- Registration -->
+        <section id="registerSection" class="form-box hidden">
+            <h2>Create Account</h2>
+
+            <input type="text" id="regName" placeholder="Full name">
+            <input type="email" id="regEmail" placeholder="Email address">
+            <input type="password" id="regPassword" placeholder="Password (minimum 6 characters)">
+
+            <button onclick="registerUser()">Register</button>
+
+            <p>Already registered?
+                <a href="#" onclick="showLogin(); return false;">Login here</a>
+            </p>
+        </section>
+
+        <!-- Login -->
+        <section id="loginSection" class="form-box">
+            <h2>Login</h2>
+
+            <input type="email" id="loginEmail" placeholder="Email address">
+            <input type="password" id="loginPassword" placeholder="Password">
+
+            <button onclick="loginUser()">Login</button>
+
+            <p>New user?
+                <a href="#" onclick="showRegister(); return false;">Create account</a>
+            </p>
+
+            <div class="demo-info">
+                <strong>Demo Admin Login</strong>
+                <p>Email: admin@demo.com</p>
+                <p>Password: Admin123</p>
+            </div>
+        </section>
+
+        <!-- User Dashboard -->
+        <section id="dashboardSection" class="form-box hidden">
+            <h2>User Dashboard</h2>
+
+            <div class="welcome-card">
+                <h3 id="welcomeMessage"></h3>
+                <p id="currentEmail"></p>
+                <p class="status">Session Active</p>
+            </div>
+
+            <button class="logout-btn" onclick="logoutUser()">Logout</button>
+        </section>
+
+        <!-- Admin Dashboard -->
+        <section id="adminSection" class="hidden">
+            <h2>🛡️ Admin Dashboard</h2>
+            <p class="admin-description">Registered users management</p>
+
+            <div class="stats-card">
+                <span>Total Registered Users</span>
+                <h2 id="totalUsers">0</h2>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Registered On</th>
+                        </tr>
+                    </thead>
+                    <tbody id="userTableBody"></tbody>
+                </table>
+            </div>
+
+            <p id="emptyMessage" class="hidden">
+                No registered users found.
+            </p>
+
+            <button class="refresh-btn" onclick="showAdminDashboard()">
+                Refresh User Data
+            </button>
+
+            <button class="logout-btn" onclick="logoutUser()">
+                Admin Logout
+            </button>
+        </section>
+
+        <p id="message" role="status" aria-live="polite"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
